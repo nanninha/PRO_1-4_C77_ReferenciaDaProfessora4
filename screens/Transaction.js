@@ -12,6 +12,8 @@ import * as Permissions from "expo-permissions";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
 const bgImage = require("../assets/background2.png");
+const appIcon = require("../assets/appIcon.png");
+const appName = require("../assets/appName.png");
 
 
 export default class TransactionScreen extends Component {
@@ -70,7 +72,10 @@ export default class TransactionScreen extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={bgImage} style={styles.bgImage}>
-          
+          <View style={styles.upperContainer}>
+            <Image source={appIcon} style={styles.appIcon} />
+            <Image source={appName} style={styles.appName} />
+          </View>
           <View style={styles.lowerContainer}>
             <View style={styles.textinputContainer}>
               <TextInput
@@ -117,7 +122,21 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     justifyContent: "center"
   },
- 
+  upperContainer: {
+    flex: 0.5,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  appIcon: {
+    width: 200,
+    height: 200,
+    resizeMode: "contain",
+    marginTop: 80
+  },
+  appName: {
+    width: 180,
+    resizeMode: "contain"
+  },
   lowerContainer: {
     flex: 0.5,
     alignItems: "center"
