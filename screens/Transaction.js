@@ -8,7 +8,7 @@ import {
   ImageBackground,
   Image
 } from "react-native";
-import * as Permissions from "expo-permissions";
+import {Camera} from "expo-camera";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
 const bgImage = require("../assets/background2.png");
@@ -29,7 +29,7 @@ export default class TransactionScreen extends Component {
   }
 
   getCameraPermissions = async domState => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await Camera.requestCameraPermissionsAsync();
 
     this.setState({
       /*status === "granted" é verdadeiro quando o usuário concedeu permissão
